@@ -95,81 +95,6 @@ function App() {
 
   const projects = [
     {
-      title: "Restaurant Website",
-      desc: "Static restaurant website built with pure HTML and CSS. First semester ICT project focused on advanced styling techniques, responsive design, and modern UI aesthetics.",
-      tags: ["web", "html", "css"],
-      icon: "Food Stop 🍽️",
-      isText: true,
-      github: "https://github.com/AasirFarrukh",
-      demoImages: [
-        require('./Images/IICT/home.png'),
-        require('./Images/IICT/menu.png'),
-        require('./Images/IICT/deals.png'),
-        require('./Images/IICT/cart.png'),
-        require('./Images/IICT/login.png'),
-        require('./Images/IICT/signup.png')
-      ],
-      demoImageTitles: ["Home Page", "Menu Page", "Deals Page", "Cart Page", "Login Page", "Signup Page"]
-    },
-    {
-      title: "2D Taxi Game",
-      desc: "Interactive 2D taxi pickup and drop-off simulation game built with C++ using OpenGL and GLUT. Features collision detection, randomized traffic, leaderboard system, and adjustable difficulty.",
-      tags: ["other", "cpp", "opengl"],
-      icon: "Rush Hour 🚖",
-      isText: true,
-      github: "https://github.com/AasirFarrukh/RushHourGame",
-      demoImages: [
-        require('./Images/PF/screen1.png'),
-        require('./Images/PF/screen2.png'),
-        require('./Images/PF/screen3.png'),
-        require('./Images/PF/screen4.png'),
-        require('./Images/PF/screen5.png')
-      ],
-      demoImageTitles: ["Main Menu", "Choose Taxi", "Enter Name", "Gameplay", "Game Over"]
-    },
-    {
-      title: "University Management System",
-      desc: "Full-stack web application using ASP.NET with HTML/CSS and JavaScript. Integrated SQL Server and C# for efficient backend data management.",
-      tags: ["web", "asp.net", "sql"],
-      icon: "🎓",
-      github: "https://github.com/AasirFarrukh"
-    },
-    {
-      title: "Community Management System",
-      desc: "Web application using ASP.NET with SCRUM methodology, featuring role-based access control and MySQL database integration.",
-      tags: ["web", "asp.net", "mysql"],
-      icon: "🏘️",
-      github: "https://github.com/AasirFarrukh"
-    },
-    {
-      title: "Hospital Management System",
-      desc: "C++ desktop application demonstrating OOP principles including inheritance and polymorphism for hospital workflows.",
-      tags: ["other", "cpp", "oop"],
-      icon: "🏥",
-      github: "https://github.com/AasirFarrukh"
-    },
-    {
-      title: "Library Management System",
-      desc: "Java desktop application using JavaFX and MySQL with MVC architecture, featuring interactive dashboards and transaction workflows.",
-      tags: ["other", "java", "javafx"],
-      icon: "📚",
-      github: "https://github.com/AasirFarrukh"
-    },
-    {
-      title: "Optimal File Searching",
-      desc: "Advanced data structures implementation using AVL, Red-Black trees, and B-Trees for efficient file operations.",
-      tags: ["other", "algorithms", "cpp"],
-      icon: "🔍",
-      github: "https://github.com/AasirFarrukh"
-    },
-    {
-      title: "Timetable Scheduler",
-      desc: "Intelligent scheduling system using genetic algorithms in Python for university timetable optimization with hard/soft constraint handling.",
-      tags: ["ai", "python", "algorithms"],
-      icon: "📅",
-      github: "https://github.com/AasirFarrukh"
-    },
-    {
       title: "AI-Powered Fitness Routine Planner",
       desc: "Generative AI system using LLMs, FAISS semantic search, and Vision Transformer for personalized workout plans with Gradio UI.",
       tags: ["ai", "ml", "python"],
@@ -191,11 +116,94 @@ function App() {
       github: "https://github.com/AasirFarrukh"
     },
     {
+      title: "Timetable Scheduler",
+      desc: "Intelligent scheduling system using genetic algorithms in Python for university timetable optimization with hard/soft constraint handling.",
+      tags: ["ai", "python", "algorithms"],
+      icon: "📅",
+      github: "https://github.com/AasirFarrukh"
+    },
+    {
+      title: "University Management System",
+      desc: "Full-stack web application using ASP.NET with HTML/CSS and JavaScript. Integrated SQL Server and C# for efficient backend data management.",
+      tags: ["web", "asp.net", "sql"],
+      icon: "🎓",
+      github: "https://github.com/AasirFarrukh"
+    },
+    {
+      title: "Community Management System",
+      desc: "Web application using ASP.NET with SCRUM methodology, featuring role-based access control and MySQL database integration.",
+      tags: ["web", "asp.net", "mysql"],
+      icon: "🏘️",
+      github: "https://github.com/AasirFarrukh"
+    },
+    {
+      title: "Library Management System",
+      desc: "Java desktop application using JavaFX and MySQL with MVC architecture, featuring interactive dashboards and transaction workflows.",
+      tags: ["other", "java", "javafx"],
+      icon: "📚",
+      github: "https://github.com/AasirFarrukh"
+    },
+    {
+      title: "Doctor Appointment System",
+      desc: "C++ OOP project simulating an online doctor appointment platform. Features role-based access (Admin/Doctor/Patient), appointment scheduling, file handling for persistent storage, and demonstrates encapsulation, inheritance, and polymorphism.",
+      tags: ["other", "cpp", "oop"],
+      icon: "Oladoc 🏥",
+      isText: true,
+      github: "https://github.com/AasirFarrukh/Oladoc",
+      demoImages: [
+        require('./Images/OOP/screen1.png'),
+        require('./Images/OOP/screen2.png'),
+        require('./Images/OOP/screen3.png'),
+        require('./Images/OOP/screen4.png')
+      ],
+      demoImageTitles: ["Main Menu", "Admin Dashboard", "Doctor Dashboard", "Patient Dashboard"]
+    },
+    {
+      title: "Optimal File Searching",
+      desc: "Advanced data structures implementation using AVL, Red-Black trees, and B-Trees for efficient file operations.",
+      tags: ["other", "algorithms", "cpp"],
+      icon: "🔍",
+      github: "https://github.com/AasirFarrukh"
+    },
+    {
       title: "Gamified Mental Wellness App",
       desc: "UX-focused wellness app prototyped in Figma with wireframing and usability testing for engagement and accessibility.",
       tags: ["other", "design", "figma"],
       icon: "🧠",
       github: "https://github.com/AasirFarrukh"
+    },
+    {
+      title: "2D Taxi Game",
+      desc: "Interactive 2D taxi pickup and drop-off simulation game built with C++ using OpenGL and GLUT. Features collision detection, randomized traffic, leaderboard system, and adjustable difficulty.",
+      tags: ["other", "cpp", "opengl"],
+      icon: "Rush Hour 🚖",
+      isText: true,
+      github: "https://github.com/AasirFarrukh/RushHourGame",
+      demoImages: [
+        require('./Images/PF/screen1.png'),
+        require('./Images/PF/screen2.png'),
+        require('./Images/PF/screen3.png'),
+        require('./Images/PF/screen4.png'),
+        require('./Images/PF/screen5.png')
+      ],
+      demoImageTitles: ["Main Menu", "Choose Taxi", "Enter Name", "Gameplay", "Game Over"]
+    },
+    {
+      title: "Restaurant Website",
+      desc: "Static restaurant website built with pure HTML and CSS. First semester ICT project focused on advanced styling techniques, responsive design, and modern UI aesthetics.",
+      tags: ["web", "html", "css"],
+      icon: "Food Stop 🍽️",
+      isText: true,
+      github: "https://github.com/AasirFarrukh",
+      demoImages: [
+        require('./Images/IICT/home.png'),
+        require('./Images/IICT/menu.png'),
+        require('./Images/IICT/deals.png'),
+        require('./Images/IICT/cart.png'),
+        require('./Images/IICT/login.png'),
+        require('./Images/IICT/signup.png')
+      ],
+      demoImageTitles: ["Home Page", "Menu Page", "Deals Page", "Cart Page", "Login Page", "Signup Page"]
     }
   ];
 
