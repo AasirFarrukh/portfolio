@@ -98,7 +98,7 @@ function App() {
       title: "Restaurant Website",
       desc: "Static restaurant website built with pure HTML and CSS. First semester ICT project focused on advanced styling techniques, responsive design, and modern UI aesthetics.",
       tags: ["web", "html", "css"],
-      icon: "Food Stop",
+      icon: "Food Stop 🍽️",
       isText: true,
       github: "https://github.com/AasirFarrukh",
       demoImages: [
@@ -110,6 +110,22 @@ function App() {
         require('./Images/IICT/signup.png')
       ],
       demoImageTitles: ["Home Page", "Menu Page", "Deals Page", "Cart Page", "Login Page", "Signup Page"]
+    },
+    {
+      title: "2D Taxi Game",
+      desc: "Interactive 2D taxi pickup and drop-off simulation game built with C++ using OpenGL and GLUT. Features collision detection, randomized traffic, leaderboard system, and adjustable difficulty.",
+      tags: ["other", "cpp", "opengl"],
+      icon: "Rush Hour 🚖",
+      isText: true,
+      github: "https://github.com/AasirFarrukh/RushHourGame",
+      demoImages: [
+        require('./Images/PF/screen1.png'),
+        require('./Images/PF/screen2.png'),
+        require('./Images/PF/screen3.png'),
+        require('./Images/PF/screen4.png'),
+        require('./Images/PF/screen5.png')
+      ],
+      demoImageTitles: ["Main Menu", "Choose Taxi", "Enter Name", "Gameplay", "Game Over"]
     },
     {
       title: "University Management System",
