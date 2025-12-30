@@ -166,6 +166,23 @@ function App() {
       github: "https://github.com/AasirFarrukh"
     },
     {
+      title: "Brick Breaker Game",
+      desc: "Classic brick breaker game implemented in x86 Assembly Language, running in DOS via DOSBox. Features multiple levels, lives system, high score tracking, pause/resume functionality, and collision detection logic.",
+      tags: ["other", "assembly", "game"],
+      icon: "Brick Breaker 🧱",
+      isText: true,
+      github: "https://github.com/AasirFarrukh/BrickBreaker",
+      demoImages: [
+        require('./Images/COAL/screen1.png'),
+        require('./Images/COAL/screen2.png'),
+        require('./Images/COAL/screen3.png'),
+        require('./Images/COAL/screen4.png'),
+        require('./Images/COAL/screen5.png'),
+        require('./Images/COAL/screen6.png')
+      ],
+      demoImageTitles: ["Start Screen", "Main Menu", "Instructions", "Gameplay", "High Score", "Game Over"]
+    },
+    {
       title: "Gamified Mental Wellness App",
       desc: "UX-focused wellness app prototyped in Figma with wireframing and usability testing for engagement and accessibility.",
       tags: ["other", "design", "figma"],
