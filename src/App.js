@@ -230,13 +230,25 @@ function App() {
       period: "Aug 2017 - May 2019",
       grade: "2 As, 4 Bs, 2 Cs",
       details: [
-        "Sciences Major with distinction",
+        "Sciences Major",
         "Early exposure to programming and problem-solving"
       ]
     }
   ];
 
   const experience = [
+    {
+      title: "UI/UX Designer & Software Developer",
+      company: "ITHM Rawalpindi",
+      period: "Nov 2025 – Present",
+      location: "Rawalpindi, Pakistan",
+      type: "Internship",
+      points: [
+        "Redesigned institute website with modern UI/UX featuring gradient backgrounds and responsive layouts for enhanced user engagement",
+        "Developing Xenia Services corporate website from scratch using WordPress and Elementor with custom design elements",
+        "Building institutional management system with integrated features for student records, course management, and administrative workflows"
+      ]
+    },
     {
       title: "Data Analyst & Frontend Engineer",
       company: "Upstart Commerce (Final Year Project)",
