@@ -16,6 +16,21 @@ function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isFooterOpen, setIsFooterOpen] = useState(true);
+  const [openCourseCategories, setOpenCourseCategories] = useState({
+    ai: false,
+    core: false,
+    specialized: false,
+    math: false,
+    business: false,
+    science: false
+  });
+
+  const toggleCourseCategory = (category) => {
+    setOpenCourseCategories(prev => ({
+      ...prev,
+      [category]: !prev[category]
+    }));
+  };
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -169,18 +184,22 @@ function App() {
   ];
 
   const skills = [
-    { name: "HTML/CSS/JavaScript", level: 90, icon: "🌐" },
-    { name: "React.js & Modern Frameworks", level: 85, icon: "⚛️" },
-    { name: "Python & Data Science", level: 88, icon: "🐍" },
-    { name: "C/C++", level: 85, icon: "⚡" },
-    { name: "C# / ASP.NET", level: 82, icon: "💻" },
-    { name: "Java & JavaFX", level: 80, icon: "☕" },
-    { name: "SQL & Databases", level: 85, icon: "🗄️" },
-    { name: "Machine Learning & AI", level: 78, icon: "🤖" },
-    { name: "UI/UX Design (Figma)", level: 80, icon: "🎨" },
-    { name: "Flask & FastAPI", level: 82, icon: "🔥" },
-    { name: "TensorFlow & PyTorch", level: 75, icon: "🧠" },
-    { name: "Git & Version Control", level: 88, icon: "📦" }
+    { name: "Python & Data Science", level: 92, icon: "🐍" },
+    { name: "HTML/CSS/JavaScript", level: 88, icon: "🌐" },
+    { name: "Machine Learning & AI", level: 85, icon: "🤖" },
+    { name: "C# / ASP.NET", level: 85, icon: "💻" },
+    { name: "Deep Learning (TensorFlow/PyTorch)", level: 82, icon: "🧠" },
+    { name: "C/C++ & Data Structures", level: 85, icon: "⚡" },
+    { name: "SQL & Databases (MySQL/SQL Server)", level: 82, icon: "🗄️" },
+    { name: "Flask & Streamlit", level: 85, icon: "🔥" },
+    { name: "React.js & Modern Frameworks", level: 78, icon: "⚛️" },
+    { name: "Java & JavaFX", level: 75, icon: "☕" },
+    { name: "RESTful APIs & Backend Development", level: 82, icon: "🔌" },
+    { name: "Git & Version Control", level: 88, icon: "📦" },
+    { name: "UI/UX Design (Figma)", level: 72, icon: "🎨" },
+    { name: "Computer Vision & Image Processing", level: 78, icon: "👁️" },
+    { name: "Cloud Computing & Deployment", level: 70, icon: "☁️" },
+    { name: "Algorithms & Problem Solving", level: 85, icon: "🧩" }
   ];
 
   const education = [
@@ -517,170 +536,254 @@ function App() {
           </h2>
 
           {/* Course Categories */}
-          <div className="space-y-12">
+          <div className="space-y-4">
             
             {/* AI & Machine Learning */}
-            <div>
-              <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}>
-                AI & Machine Learning
-              </h3>
-              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {[
-                  { name: "Artificial Intelligence", code: "AI2002" },
-                  { name: "Deep Learning for Perception", code: "CS4045" },
-                  { name: "Generative AI", code: "AI4009" },
-                  { name: "Digital Image Processing", code: "CS4055" }
-                ].map((course, idx) => (
-                  <div
-                    key={idx}
-                    className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl p-5 border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} hover:scale-105 transition-all shadow-xl`}
-                  >
-                    <div className="text-cyan-400 font-bold text-sm mb-2">{course.code}</div>
-                    <div className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                      {course.name}
+            <div className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} overflow-hidden transition-all`}>
+              <button
+                onClick={() => toggleCourseCategory('ai')}
+                className="w-full px-6 py-4 flex items-center justify-between hover:bg-white/5 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-cyan-400' : 'text-cyan-600'}`}>
+                    AI & Machine Learning
+                  </h3>
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${theme === 'dark' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-cyan-500/30 text-cyan-700'}`}>
+                    4 courses
+                  </span>
+                </div>
+                <ChevronDown className={`transition-transform ${openCourseCategories.ai ? 'rotate-180' : ''}`} size={24} />
+              </button>
+              
+              <div className={`transition-all duration-300 ${openCourseCategories.ai ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                <div className="px-6 pb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {[
+                    { name: "Artificial Intelligence", code: "AI2002" },
+                    { name: "Deep Learning for Perception", code: "CS4045" },
+                    { name: "Generative AI", code: "AI4009" },
+                    { name: "Digital Image Processing", code: "CS4055" }
+                  ].map((course, idx) => (
+                    <div
+                      key={idx}
+                      className={`${theme === 'dark' ? 'bg-white/5 hover:bg-white/10' : 'bg-white/50 hover:bg-white/70'} backdrop-blur-xl rounded-xl p-4 border ${theme === 'dark' ? 'border-white/10' : 'border-white/40'} transition-all`}
+                    >
+                      <div className="text-cyan-400 font-bold text-xs mb-1">{course.code}</div>
+                      <div className={`font-semibold text-sm ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                        {course.name}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
             {/* Core Computer Science */}
-            <div>
-              <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`}>
-                Core Computer Science
-              </h3>
-              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {[
-                  { name: "Introduction to Information and Communication Technology", code: "CL1000" },
-                  { name: "Programming Fundamentals", code: "CS1002" },
-                  { name: "Object Oriented Programming", code: "CS1004" },
-                  { name: "Data Structures", code: "CS2001" },
-                  { name: "Design and Analysis of Algorithms", code: "CS2009" },
-                  { name: "Database Systems", code: "CS2005" },
-                  { name: "Software Engineering", code: "CS3009" },
-                  { name: "Software Design and Analysis", code: "CS3004" },
-                  { name: "Operating Systems", code: "CS2006" },
-                  { name: "Computer Organization and Assembly Language", code: "EE2003" }
-                ].map((course, idx) => (
-                  <div
-                    key={idx}
-                    className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl p-5 border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} hover:scale-105 transition-all shadow-xl`}
-                  >
-                    <div className="text-blue-400 font-bold text-sm mb-2">{course.code}</div>
-                    <div className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                      {course.name}
+            <div className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} overflow-hidden transition-all`}>
+              <button
+                onClick={() => toggleCourseCategory('core')}
+                className="w-full px-6 py-4 flex items-center justify-between hover:bg-white/5 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`}>
+                    Core Computer Science
+                  </h3>
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${theme === 'dark' ? 'bg-blue-500/20 text-blue-400' : 'bg-blue-500/30 text-blue-700'}`}>
+                    10 courses
+                  </span>
+                </div>
+                <ChevronDown className={`transition-transform ${openCourseCategories.core ? 'rotate-180' : ''}`} size={24} />
+              </button>
+              
+              <div className={`transition-all duration-300 ${openCourseCategories.core ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                <div className="px-6 pb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {[
+                    { name: "Introduction to Information and Communication Technology", code: "CL1000" },
+                    { name: "Programming Fundamentals", code: "CS1002" },
+                    { name: "Object Oriented Programming", code: "CS1004" },
+                    { name: "Data Structures", code: "CS2001" },
+                    { name: "Design and Analysis of Algorithms", code: "CS2009" },
+                    { name: "Database Systems", code: "CS2005" },
+                    { name: "Software Engineering", code: "CS3009" },
+                    { name: "Software Design and Analysis", code: "CS3004" },
+                    { name: "Operating Systems", code: "CS2006" },
+                    { name: "Computer Organization and Assembly Language", code: "EE2003" }
+                  ].map((course, idx) => (
+                    <div
+                      key={idx}
+                      className={`${theme === 'dark' ? 'bg-white/5 hover:bg-white/10' : 'bg-white/50 hover:bg-white/70'} backdrop-blur-xl rounded-xl p-4 border ${theme === 'dark' ? 'border-white/10' : 'border-white/40'} transition-all`}
+                    >
+                      <div className="text-blue-400 font-bold text-xs mb-1">{course.code}</div>
+                      <div className={`font-semibold text-sm ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                        {course.name}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
             {/* Specialized CS */}
-            <div>
-              <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`}>
-                Specialized Computer Science
-              </h3>
-              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {[
-                  { name: "Digital Logic Design", code: "EE1005" },
-                  { name: "Blockchain and Cryptocurrency", code: "CS4049" },
-                  { name: "Cloud Computing", code: "CS4075" },
-                  { name: "Computer Networks", code: "CS3001" },
-                  { name: "Information Security", code: "CS3002" },
-                  { name: "Parallel and Distributed Computing", code: "CS3006" },
-                  { name: "Theory of Automata", code: "CS3005" },
-                  { name: "User Experience Engineering", code: "CS4074" }
-                ].map((course, idx) => (
-                  <div
-                    key={idx}
-                    className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl p-5 border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} hover:scale-105 transition-all shadow-xl`}
-                  >
-                    <div className="text-purple-400 font-bold text-sm mb-2">{course.code}</div>
-                    <div className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                      {course.name}
+            <div className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} overflow-hidden transition-all`}>
+              <button
+                onClick={() => toggleCourseCategory('specialized')}
+                className="w-full px-6 py-4 flex items-center justify-between hover:bg-white/5 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`}>
+                    Specialized Computer Science
+                  </h3>
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${theme === 'dark' ? 'bg-purple-500/20 text-purple-400' : 'bg-purple-500/30 text-purple-700'}`}>
+                    8 courses
+                  </span>
+                </div>
+                <ChevronDown className={`transition-transform ${openCourseCategories.specialized ? 'rotate-180' : ''}`} size={24} />
+              </button>
+              
+              <div className={`transition-all duration-300 ${openCourseCategories.specialized ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                <div className="px-6 pb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {[
+                    { name: "Digital Logic Design", code: "EE1005" },
+                    { name: "Blockchain and Cryptocurrency", code: "CS4049" },
+                    { name: "Cloud Computing", code: "CS4075" },
+                    { name: "Computer Networks", code: "CS3001" },
+                    { name: "Information Security", code: "CS3002" },
+                    { name: "Parallel and Distributed Computing", code: "CS3006" },
+                    { name: "Theory of Automata", code: "CS3005" },
+                    { name: "User Experience Engineering", code: "CS4074" }
+                  ].map((course, idx) => (
+                    <div
+                      key={idx}
+                      className={`${theme === 'dark' ? 'bg-white/5 hover:bg-white/10' : 'bg-white/50 hover:bg-white/70'} backdrop-blur-xl rounded-xl p-4 border ${theme === 'dark' ? 'border-white/10' : 'border-white/40'} transition-all`}
+                    >
+                      <div className="text-purple-400 font-bold text-xs mb-1">{course.code}</div>
+                      <div className={`font-semibold text-sm ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                        {course.name}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
             {/* Mathematics */}
-            <div>
-              <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-green-400' : 'text-green-600'}`}>
-                Mathematics & Computing
-              </h3>
-              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {[
-                  { name: "Calculus and Analytical Geometry", code: "MT1003" },
-                  { name: "Linear Algebra", code: "MT1004" },
-                  { name: "Differential Equations", code: "MT1006" },
-                  { name: "Probability and Statistics", code: "MT2005" },
-                  { name: "Statistical Modelling", code: "MT2002" },
-                  { name: "Numerical Computing", code: "CS2008" },
-                  { name: "Discrete Structures", code: "CS1005" }
-                ].map((course, idx) => (
-                  <div
-                    key={idx}
-                    className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl p-5 border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} hover:scale-105 transition-all shadow-xl`}
-                  >
-                    <div className="text-green-400 font-bold text-sm mb-2">{course.code}</div>
-                    <div className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                      {course.name}
+            <div className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} overflow-hidden transition-all`}>
+              <button
+                onClick={() => toggleCourseCategory('math')}
+                className="w-full px-6 py-4 flex items-center justify-between hover:bg-white/5 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-green-400' : 'text-green-600'}`}>
+                    Mathematics & Computing
+                  </h3>
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${theme === 'dark' ? 'bg-green-500/20 text-green-400' : 'bg-green-500/30 text-green-700'}`}>
+                    7 courses
+                  </span>
+                </div>
+                <ChevronDown className={`transition-transform ${openCourseCategories.math ? 'rotate-180' : ''}`} size={24} />
+              </button>
+              
+              <div className={`transition-all duration-300 ${openCourseCategories.math ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                <div className="px-6 pb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {[
+                    { name: "Calculus and Analytical Geometry", code: "MT1003" },
+                    { name: "Linear Algebra", code: "MT1004" },
+                    { name: "Differential Equations", code: "MT1006" },
+                    { name: "Probability and Statistics", code: "MT2005" },
+                    { name: "Statistical Modelling", code: "MT2002" },
+                    { name: "Numerical Computing", code: "CS2008" },
+                    { name: "Discrete Structures", code: "CS1005" }
+                  ].map((course, idx) => (
+                    <div
+                      key={idx}
+                      className={`${theme === 'dark' ? 'bg-white/5 hover:bg-white/10' : 'bg-white/50 hover:bg-white/70'} backdrop-blur-xl rounded-xl p-4 border ${theme === 'dark' ? 'border-white/10' : 'border-white/40'} transition-all`}
+                    >
+                      <div className="text-green-400 font-bold text-xs mb-1">{course.code}</div>
+                      <div className={`font-semibold text-sm ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                        {course.name}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
             {/* Business & Professional */}
-            <div>
-              <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-orange-400' : 'text-orange-600'}`}>
-                Business & Professional Development
-              </h3>
-              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {[
-                  { name: "Digital Marketing", code: "MG4033" },
-                  { name: "Marketing Management", code: "MG1002" },
-                  { name: "Freelancing", code: "MG1007" },
-                  { name: "Professional Practices in IT", code: "CS4001" },
-                  { name: "Technical and Business Writing", code: "SS2007" },
-                  { name: "English Composition and Comprehension", code: "SS1004" },
-                  { name: "Communication and Presentation Skills", code: "SS1008" },
-                  { name: "Islamic Studies/Ethics", code: "SS1002" },
-                  { name: "Pakistan Studies", code: "SS1003" }
-                ].map((course, idx) => (
-                  <div
-                    key={idx}
-                    className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl p-5 border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} hover:scale-105 transition-all shadow-xl`}
-                  >
-                    <div className="text-orange-400 font-bold text-sm mb-2">{course.code}</div>
-                    <div className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                      {course.name}
+            <div className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} overflow-hidden transition-all`}>
+              <button
+                onClick={() => toggleCourseCategory('business')}
+                className="w-full px-6 py-4 flex items-center justify-between hover:bg-white/5 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-orange-400' : 'text-orange-600'}`}>
+                    Business & Professional Development
+                  </h3>
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${theme === 'dark' ? 'bg-orange-500/20 text-orange-400' : 'bg-orange-500/30 text-orange-700'}`}>
+                    9 courses
+                  </span>
+                </div>
+                <ChevronDown className={`transition-transform ${openCourseCategories.business ? 'rotate-180' : ''}`} size={24} />
+              </button>
+              
+              <div className={`transition-all duration-300 ${openCourseCategories.business ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                <div className="px-6 pb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {[
+                    { name: "Digital Marketing", code: "MG4033" },
+                    { name: "Marketing Management", code: "MG1002" },
+                    { name: "Freelancing", code: "MG1007" },
+                    { name: "Professional Practices in IT", code: "CS4001" },
+                    { name: "Technical and Business Writing", code: "SS2007" },
+                    { name: "English Composition and Comprehension", code: "SS1004" },
+                    { name: "Communication and Presentation Skills", code: "SS1008" },
+                    { name: "Islamic Studies/Ethics", code: "SS1002" },
+                    { name: "Pakistan Studies", code: "SS1003" }
+                  ].map((course, idx) => (
+                    <div
+                      key={idx}
+                      className={`${theme === 'dark' ? 'bg-white/5 hover:bg-white/10' : 'bg-white/50 hover:bg-white/70'} backdrop-blur-xl rounded-xl p-4 border ${theme === 'dark' ? 'border-white/10' : 'border-white/40'} transition-all`}
+                    >
+                      <div className="text-orange-400 font-bold text-xs mb-1">{course.code}</div>
+                      <div className={`font-semibold text-sm ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                        {course.name}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
             {/* Sciences */}
-            <div>
-              <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-pink-400' : 'text-pink-600'}`}>
-                Sciences
-              </h3>
-              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {[
-                  { name: "Applied Physics", code: "NS1001" }
-                ].map((course, idx) => (
-                  <div
-                    key={idx}
-                    className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl p-5 border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} hover:scale-105 transition-all shadow-xl`}
-                  >
-                    <div className="text-pink-400 font-bold text-sm mb-2">{course.code}</div>
-                    <div className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                      {course.name}
+            <div className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} overflow-hidden transition-all`}>
+              <button
+                onClick={() => toggleCourseCategory('science')}
+                className="w-full px-6 py-4 flex items-center justify-between hover:bg-white/5 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-pink-400' : 'text-pink-600'}`}>
+                    Sciences
+                  </h3>
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${theme === 'dark' ? 'bg-pink-500/20 text-pink-400' : 'bg-pink-500/30 text-pink-700'}`}>
+                    1 course
+                  </span>
+                </div>
+                <ChevronDown className={`transition-transform ${openCourseCategories.science ? 'rotate-180' : ''}`} size={24} />
+              </button>
+              
+              <div className={`transition-all duration-300 ${openCourseCategories.science ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                <div className="px-6 pb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {[
+                    { name: "Applied Physics", code: "NS1001" }
+                  ].map((course, idx) => (
+                    <div
+                      key={idx}
+                      className={`${theme === 'dark' ? 'bg-white/5 hover:bg-white/10' : 'bg-white/50 hover:bg-white/70'} backdrop-blur-xl rounded-xl p-4 border ${theme === 'dark' ? 'border-white/10' : 'border-white/40'} transition-all`}
+                    >
+                      <div className="text-pink-400 font-bold text-xs mb-1">{course.code}</div>
+                      <div className={`font-semibold text-sm ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                        {course.name}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -995,32 +1098,46 @@ function App() {
             <Code className="text-cyan-400" size={48} /> Skills
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {skills.map((skill, idx) => (
               <div
                 key={idx}
-                className={`${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-2xl rounded-3xl p-8 border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} hover:scale-105 transition-all shadow-2xl`}
+                className={`group ${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl p-5 border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'} hover:scale-105 hover:shadow-2xl transition-all shadow-lg relative overflow-hidden`}
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-4">
-                    <span className="text-5xl">{skill.icon}</span>
-                    <span className={`font-bold text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                      {skill.name}
-                    </span>
-                  </div>
-                  <span className="text-cyan-400 font-bold text-2xl">{skill.level}%</span>
-                </div>
+                {/* Background gradient on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-cyan-500/0 to-teal-500/0 group-hover:from-blue-500/10 group-hover:via-cyan-500/10 group-hover:to-teal-500/10 transition-all duration-300" />
                 
-                <div className={`w-full ${theme === 'dark' ? 'bg-white/10' : 'bg-gray-300/50'} rounded-full h-4 overflow-hidden backdrop-blur-xl`}>
-                  <div
-                    className="h-full bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 rounded-full transition-all duration-1000 ease-out shadow-lg relative overflow-hidden"
-                    style={{ width: `${skill.level}%` }}
-                  >
-                    <div className="absolute inset-0 bg-white/20 animate-pulse" />
+                <div className="relative z-10">
+                  {/* Icon and Percentage */}
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-3xl">{skill.icon}</span>
+                    <div className={`px-3 py-1 rounded-full ${theme === 'dark' ? 'bg-cyan-500/20' : 'bg-cyan-500/30'} backdrop-blur-xl`}>
+                      <span className="text-cyan-400 font-bold text-sm">{skill.level}%</span>
+                    </div>
+                  </div>
+                  
+                  {/* Skill Name */}
+                  <h3 className={`font-bold text-sm leading-tight ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    {skill.name}
+                  </h3>
+                  
+                  {/* Minimal Progress Bar */}
+                  <div className={`mt-3 w-full h-1.5 ${theme === 'dark' ? 'bg-white/10' : 'bg-gray-300/50'} rounded-full overflow-hidden`}>
+                    <div
+                      className="h-full bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 rounded-full transition-all duration-1000"
+                      style={{ width: `${skill.level}%` }}
+                    />
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+          
+          {/* Skills Summary */}
+          <div className={`mt-8 ${theme === 'dark' ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-xl rounded-2xl p-6 border ${theme === 'dark' ? 'border-white/10' : 'border-white/60'}`}>
+            <p className={`text-center ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} text-sm`}>
+              💡 <span className="font-semibold">Strong in:</span> Python • Machine Learning • Full-Stack Development • Data Structures • Database Systems
+            </p>
           </div>
         </div>
       </section>
