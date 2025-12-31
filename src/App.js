@@ -124,10 +124,18 @@ function App() {
     },
     {
       title: "University Management System",
-      desc: "Full-stack web application using ASP.NET with HTML/CSS and JavaScript. Integrated SQL Server and C# for efficient backend data management.",
-      tags: ["web", "asp.net", "sql"],
-      icon: "🎓",
-      github: "https://github.com/AasirFarrukh"
+      desc: "Role-based university system built with ASP.NET Web Forms and SQL Server. Features admin course management, faculty attendance tracking, student grade viewing, and normalized database schema with ADO.NET.",
+      tags: ["web", "asp.net", "database"],
+      icon: "FLEX 🎓",
+      isText: true,
+      github: "https://github.com/AasirFarrukh/FLEX",
+      demoImages: [
+        require('./Images/DB/screen1.png'),
+        require('./Images/DB/screen2.png'),
+        require('./Images/DB/screen3.png'),
+        require('./Images/DB/screen4.png')
+      ],
+      demoImageTitles: ["Login Page", "Admin Dashboard", "Faculty Dashboard", "Student Dashboard"]
     },
     {
       title: "Community Management System",
@@ -159,8 +167,32 @@ function App() {
       demoImageTitles: ["Main Menu", "Admin Dashboard", "Doctor Dashboard", "Patient Dashboard"]
     },
     {
+      title: "Neural Network Simulation",
+      desc: "Multi-layer feedforward neural network simulation using POSIX threads, process forking, mutex locks, and pipes. Demonstrates parallelism, synchronization, and inter-process communication in C++ for forward and backpropagation.",
+      tags: ["other", "cpp", "os"],
+      icon: "Neural Net 🧠",
+      isText: true,
+      github: "https://github.com/AasirFarrukh/Neural-Network-Simulation"
+    },
+    {
+      title: "Largest Strongly Connected Component Finder",
+      desc: "C++ program implementing Kosaraju's Algorithm to find the largest Strongly Connected Component in directed graphs. Processes large-scale graph datasets with DFS traversal, graph reversal, and SCC detection.",
+      tags: ["other", "cpp", "algorithms"],
+      icon: "SCC 🔗",
+      isText: true,
+      github: "https://github.com/AasirFarrukh/SCC-Discrete"
+    },
+    {
+      title: "String Matching Algorithm",
+      desc: "Design and Analysis of Algorithms project implementing sliding window search technique to identify complete dish sets from ingredient sequences. Ensures each ingredient is used once per dish with efficient pattern matching in C++.",
+      tags: ["other", "cpp", "algorithms"],
+      icon: "String Match 🔤",
+      isText: true,
+      github: "https://github.com/AasirFarrukh/StringMatching-Algo"
+    },
+    {
       title: "Optimal File Searching",
-      desc: "Advanced data structures implementation using AVL, Red-Black trees, and B-Trees for efficient file operations.",
+      desc: "Data Structures course project (Semester 3) implementing multiple tree-based search algorithms in C++. Compares performance of AVL trees, Red-Black trees, and B-Trees for efficient file search operations and demonstrates advanced data structure methodologies.",
       tags: ["other", "algorithms", "cpp"],
       icon: "🔍",
       github: "https://github.com/AasirFarrukh"
@@ -225,22 +257,22 @@ function App() {
   ];
 
   const skills = [
-    { name: "Python & Data Science", level: 92, icon: "🐍" },
-    { name: "HTML/CSS/JavaScript", level: 88, icon: "🌐" },
-    { name: "Machine Learning & AI", level: 85, icon: "🤖" },
-    { name: "C# / ASP.NET", level: 85, icon: "💻" },
-    { name: "Deep Learning (TensorFlow/PyTorch)", level: 82, icon: "🧠" },
-    { name: "C/C++ & Data Structures", level: 85, icon: "⚡" },
-    { name: "SQL & Databases (MySQL/SQL Server)", level: 82, icon: "🗄️" },
-    { name: "Flask & Streamlit", level: 85, icon: "🔥" },
-    { name: "React.js & Modern Frameworks", level: 78, icon: "⚛️" },
-    { name: "Java & JavaFX", level: 75, icon: "☕" },
-    { name: "RESTful APIs & Backend Development", level: 82, icon: "🔌" },
-    { name: "Git & Version Control", level: 88, icon: "📦" },
-    { name: "UI/UX Design (Figma)", level: 72, icon: "🎨" },
-    { name: "Computer Vision & Image Processing", level: 78, icon: "👁️" },
-    { name: "Cloud Computing & Deployment", level: 70, icon: "☁️" },
-    { name: "Algorithms & Problem Solving", level: 85, icon: "🧩" }
+    { name: "Python & Data Science", level: 92, icon: "🐍", symbol: "Py" },
+    { name: "HTML/CSS/JavaScript", level: 88, icon: "🌐", symbol: "JS" },
+    { name: "Machine Learning & AI", level: 85, icon: "🤖", symbol: "ML" },
+    { name: "C# / ASP.NET", level: 85, icon: "💻", symbol: "C#" },
+    { name: "Deep Learning (TensorFlow/PyTorch)", level: 82, icon: "🧠", symbol: "DL" },
+    { name: "C/C++ & Data Structures", level: 85, icon: "⚡", symbol: "C++" },
+    { name: "SQL & Databases (MySQL/SQL Server)", level: 82, icon: "🗄️", symbol: "DB" },
+    { name: "Flask & Streamlit", level: 85, icon: "🔥", symbol: "API" },
+    { name: "React.js & Modern Frameworks", level: 78, icon: "⚛️", symbol: "React" },
+    { name: "Java & JavaFX", level: 75, icon: "☕", symbol: "Java" },
+    { name: "RESTful APIs & Backend Development", level: 82, icon: "🔌", symbol: "REST" },
+    { name: "Git & Version Control", level: 88, icon: "📦", symbol: "Git" },
+    { name: "UI/UX Design (Figma)", level: 72, icon: "🎨", symbol: "UI" },
+    { name: "Computer Vision & Image Processing", level: 78, icon: "👁️", symbol: "CV" },
+    { name: "Cloud Computing & Deployment", level: 70, icon: "☁️", symbol: "Cloud" },
+    { name: "Algorithms & Problem Solving", level: 85, icon: "🧩", symbol: "Algo" }
   ];
 
   const education = [
@@ -1163,7 +1195,9 @@ function App() {
                 <div className="relative z-10">
                   {/* Icon and Percentage */}
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-3xl">{skill.icon}</span>
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-teal-400 flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                      {skill.symbol}
+                    </div>
                     <div className={`px-3 py-1 rounded-full ${theme === 'dark' ? 'bg-cyan-500/20' : 'bg-cyan-500/30'} backdrop-blur-xl`}>
                       <span className="text-cyan-400 font-bold text-sm">{skill.level}%</span>
                     </div>
@@ -1282,13 +1316,17 @@ function App() {
                 <div className="h-56 bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 flex items-center justify-center text-8xl relative overflow-hidden">
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all" />
                   {project.isText ? (
-                    <span className="relative z-10 transform group-hover:scale-110 transition-transform text-white font-bold text-4xl px-4 text-center drop-shadow-2xl">
+                    <span className="relative z-10 transform group-hover:scale-110 transition-transform text-white font-bold text-3xl md:text-4xl px-4 text-center drop-shadow-2xl">
                       {project.icon}
                     </span>
                   ) : (
-                    <span className="relative z-10 transform group-hover:scale-110 transition-transform drop-shadow-2xl">
-                      {project.icon}
-                    </span>
+                    <div className="relative z-10 transform group-hover:scale-110 transition-transform">
+                      <div className="w-32 h-32 rounded-full bg-white/20 backdrop-blur-xl border-4 border-white/40 flex items-center justify-center shadow-2xl">
+                        <span className="text-6xl filter drop-shadow-lg">
+                          {project.icon}
+                        </span>
+                      </div>
+                    </div>
                   )}
                 </div>
                 
@@ -1320,7 +1358,7 @@ function App() {
                     >
                       <Github size={20} /> Code
                     </a>
-                    {project.demoImages ? (
+                    {project.demoImages && (
                       <button 
                         onClick={() => {
                           setSelectedProject(project);
@@ -1329,10 +1367,6 @@ function App() {
                         }}
                         className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-bold"
                       >
-                        <ExternalLink size={20} /> Demo
-                      </button>
-                    ) : (
-                      <button className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-bold">
                         <ExternalLink size={20} /> Demo
                       </button>
                     )}
