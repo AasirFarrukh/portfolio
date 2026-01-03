@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Code, Github, ExternalLink, ChevronDown, X } from 'lucide-react';
+import { Code, Github, ExternalLink, ChevronDown, X, Play, Image } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { projects } from '../data';
 
@@ -9,6 +9,7 @@ function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isFooterOpen, setIsFooterOpen] = useState(true);
+  const [showVideo, setShowVideo] = useState(false);
 
   const filteredProjects = selectedFilter === 'all'
     ? projects
@@ -74,6 +75,14 @@ function ProjectsSection() {
                   <span className="relative z-10 transform group-hover:scale-110 transition-transform text-white font-bold text-3xl md:text-4xl px-4 text-center drop-shadow-2xl">
                     {project.icon}
                   </span>
+                ) : project.isImage ? (
+                  <div className="relative z-10 transform group-hover:scale-110 transition-transform">
+                    <img
+                      src={project.icon}
+                      alt={project.title}
+                      className="w-32 h-32 object-contain rounded-2xl shadow-2xl"
+                    />
+                  </div>
                 ) : (
                   <div className="relative z-10 transform group-hover:scale-110 transition-transform">
                     <div className="w-32 h-32 rounded-full bg-white/20 backdrop-blur-xl border-4 border-white/40 flex items-center justify-center shadow-2xl">
@@ -113,12 +122,13 @@ function ProjectsSection() {
                   >
                     <Github size={20} /> Code
                   </a>
-                  {project.demoImages && (
+                  {(project.demoImages || project.demoVideo) && (
                     <button
                       onClick={() => {
                         setSelectedProject(project);
                         setCurrentImageIndex(0);
                         setIsFooterOpen(true);
+                        setShowVideo(!!project.demoVideo);
                       }}
                       className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-bold"
                     >
@@ -133,12 +143,13 @@ function ProjectsSection() {
       </div>
 
       {/* Project Demo Modal */}
-      {selectedProject && selectedProject.demoImages && (
+      {selectedProject && (selectedProject.demoImages || selectedProject.demoVideo) && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-sm"
           onClick={() => {
             setSelectedProject(null);
             setIsFooterOpen(true);
+            setShowVideo(false);
           }}
         >
           <div
@@ -149,13 +160,40 @@ function ProjectsSection() {
               onClick={() => {
                 setSelectedProject(null);
                 setIsFooterOpen(true);
+                setShowVideo(false);
               }}
               className="absolute top-4 right-4 z-20 w-12 h-12 bg-black/50 hover:bg-black/70 backdrop-blur-xl rounded-full flex items-center justify-center transition-all"
             >
               <X size={24} className="text-white" />
             </button>
 
-            {selectedProject.demoImages.length > 1 && (
+            {/* Video/Image Toggle Buttons */}
+            {selectedProject.demoVideo && selectedProject.demoImages && (
+              <div className="absolute top-4 left-4 z-20 flex gap-2">
+                <button
+                  onClick={() => setShowVideo(true)}
+                  className={`px-4 py-2 rounded-full flex items-center gap-2 font-bold transition-all ${
+                    showVideo
+                      ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                      : 'bg-black/50 hover:bg-black/70 text-white'
+                  }`}
+                >
+                  <Play size={18} /> Video
+                </button>
+                <button
+                  onClick={() => setShowVideo(false)}
+                  className={`px-4 py-2 rounded-full flex items-center gap-2 font-bold transition-all ${
+                    !showVideo
+                      ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                      : 'bg-black/50 hover:bg-black/70 text-white'
+                  }`}
+                >
+                  <Image size={18} /> Images
+                </button>
+              </div>
+            )}
+
+            {!showVideo && selectedProject.demoImages && selectedProject.demoImages.length > 1 && (
               <>
                 <button
                   onClick={() => setCurrentImageIndex((prev) =>
@@ -177,17 +215,28 @@ function ProjectsSection() {
             )}
 
             <div className="flex-1 flex items-center justify-center bg-gray-100 p-4 min-h-0">
-              <img
-                src={selectedProject.demoImages[currentImageIndex]}
-                alt={`${selectedProject.title} - ${selectedProject.demoImageTitles?.[currentImageIndex] || `Screenshot ${currentImageIndex + 1}`}`}
-                className="max-w-full max-h-full object-contain"
-                onError={(e) => {
-                  const iconDisplay = selectedProject.isText
-                    ? `%3Ctext x='50%25' y='35%25' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dy='.3em' font-family='Arial'%3E${encodeURIComponent(selectedProject.icon)}%3C/text%3E`
-                    : `%3Ctext x='50%25' y='45%25' font-size='80' text-anchor='middle' dy='.3em'%3E${selectedProject.icon}%3C/text%3E`;
-                  e.target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%233b82f6;stop-opacity:1' /%3E%3Cstop offset='50%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2314b8a6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad)' width='1200' height='800'/%3E${iconDisplay}%3Ctext x='50%25' y='60%25' font-size='24' fill='%23${isDark ? 'e5e7eb' : 'f3f4f6'}' text-anchor='middle' dy='.3em' font-family='Arial'%3EProject Screenshot%3C/text%3E%3C/svg%3E`;
-                }}
-              />
+              {showVideo && selectedProject.demoVideo ? (
+                <video
+                  src={selectedProject.demoVideo}
+                  controls
+                  autoPlay
+                  className="max-w-full max-h-full rounded-lg shadow-2xl"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              ) : selectedProject.demoImages ? (
+                <img
+                  src={selectedProject.demoImages[currentImageIndex]}
+                  alt={`${selectedProject.title} - ${selectedProject.demoImageTitles?.[currentImageIndex] || `Screenshot ${currentImageIndex + 1}`}`}
+                  className="max-w-full max-h-full object-contain"
+                  onError={(e) => {
+                    const iconDisplay = selectedProject.isText
+                      ? `%3Ctext x='50%25' y='35%25' font-size='60' font-weight='bold' fill='white' text-anchor='middle' dy='.3em' font-family='Arial'%3E${encodeURIComponent(selectedProject.icon)}%3C/text%3E`
+                      : `%3Ctext x='50%25' y='45%25' font-size='80' text-anchor='middle' dy='.3em'%3E${selectedProject.icon}%3C/text%3E`;
+                    e.target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%233b82f6;stop-opacity:1' /%3E%3Cstop offset='50%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2314b8a6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad)' width='1200' height='800'/%3E${iconDisplay}%3Ctext x='50%25' y='60%25' font-size='24' fill='%23${isDark ? 'e5e7eb' : 'f3f4f6'}' text-anchor='middle' dy='.3em' font-family='Arial'%3EProject Screenshot%3C/text%3E%3C/svg%3E`;
+                  }}
+                />
+              ) : null}
             </div>
 
             <button
@@ -211,16 +260,20 @@ function ProjectsSection() {
                     {selectedProject.title}
                   </h3>
                   <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                    {selectedProject.demoImageTitles?.[currentImageIndex] || `Screenshot ${currentImageIndex + 1}`}
+                    {showVideo
+                      ? 'Demo Video'
+                      : (selectedProject.demoImageTitles?.[currentImageIndex] || `Screenshot ${currentImageIndex + 1}`)}
                   </p>
                 </div>
 
-                <div className={`px-4 py-2 rounded-full ${isDark ? 'bg-white/10' : 'bg-gray-900/10'} font-bold`}>
-                  {currentImageIndex + 1} / {selectedProject.demoImages.length}
-                </div>
+                {!showVideo && selectedProject.demoImages && (
+                  <div className={`px-4 py-2 rounded-full ${isDark ? 'bg-white/10' : 'bg-gray-900/10'} font-bold`}>
+                    {currentImageIndex + 1} / {selectedProject.demoImages.length}
+                  </div>
+                )}
               </div>
 
-              {selectedProject.demoImages.length > 1 && (
+              {!showVideo && selectedProject.demoImages && selectedProject.demoImages.length > 1 && (
                 <div className="flex gap-3 overflow-x-auto pb-2 mb-4">
                   {selectedProject.demoImages.map((img, idx) => (
                     <button

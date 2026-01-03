@@ -37,6 +37,53 @@ import iictSignup from '../Images/IICT/signup.png';
 import cnetTopology from '../Images/Cnet/Topology.png';
 import cnetSubnetting from '../Images/Cnet/subnetting.png';
 
+import aiTimetable from '../Images/AI/ProjectOutput.png';
+
+import dipVideo from '../Images/DIP/Optic-Disc-and-Cup-Segmentation.mp4';
+import dipScreen1 from '../Images/DIP/screen1.png';
+import dipScreen2 from '../Images/DIP/screen2.png';
+
+import pdcResult from '../Images/PDC/result.png';
+
+import sdaLogo from '../Images/SDA/LibraSys-logo.png';
+import sdaLogin from '../Images/SDA/Login.png';
+import sdaHome from '../Images/SDA/Home.png';
+import sdaBookCatalog from '../Images/SDA/BookCatalog.png';
+import sdaMemberCatalog from '../Images/SDA/MemberCatalog.png';
+import sdaAddBook from '../Images/SDA/AddBook.png';
+import sdaAddMember from '../Images/SDA/AddMember.png';
+import sdaIssueBook from '../Images/SDA/IssueBook.png';
+import sdaReturnRenew from '../Images/SDA/ReturnRenew.png';
+
+import seLogin from '../Images/SE/Login.png';
+import seAdminDashboard from '../Images/SE/AdminDashboard.png';
+import seAdminCreateUser from '../Images/SE/AdminCreateUser.png';
+import seAdminEditUser from '../Images/SE/AdminEditUser.png';
+import seAdminManageResDir from '../Images/SE/AdminManageResDir.png';
+import seAdminServiceReq from '../Images/SE/AdminServiceReq.png';
+import seAdminServiceRequestList from '../Images/SE/AdminServiceRequestList.png';
+import seAdminComplaintDetails from '../Images/SE/AdminComplaintDetails.png';
+import seAdminComplaintFeedback from '../Images/SE/AdminComplaintFeedback.png';
+import seAdminLostFound from '../Images/SE/AdminLostFound.png';
+import seAdminRuleReg from '../Images/SE/AdminRuleReg.png';
+import seAdminEmergencyPlan from '../Images/SE/AdminEmergencyPlan.png';
+import seAdminSetEmergencyPlan from '../Images/SE/AdminSetEmergencyPlan.png';
+import seAdminManageEmerNum from '../Images/SE/AdminManageEmerNum.png';
+import seAdminAddEmergencyContacts from '../Images/SE/AdminAddEmergencyContacts.png';
+import seAdminSocietyMap from '../Images/SE/AdminSocietyMap.png';
+import seResidentListAdmin from '../Images/SE/ResidentListAdmin.png';
+import seResidentDashboard from '../Images/SE/Residentdashboard.png';
+import seResidentViewProfile from '../Images/SE/ResidentViewProfile.png';
+import seResidentProfile from '../Images/SE/ResidentProfile.png';
+import seResidentServiceRes from '../Images/SE/ResidentServiceRes.png';
+import seResidentComplaint from '../Images/SE/ResidentComplaint.png';
+import seResidentLostFound from '../Images/SE/ResidentLostFound.png';
+import seResidentEmergencyContacts from '../Images/SE/ResidentEmergencyContacts.png';
+import seResidentEmergencyPrep from '../Images/SE/ResidentEmergencyPrep.png';
+import seResidentRules from '../Images/SE/ResidentRules.png';
+import seResidentResDir from '../Images/SE/ResidentResDir.png';
+import seResidentSocMap from '../Images/SE/ResidentSocMap.png';
+
 const projects = [
   // ===== AI / Machine Learning =====
   {
@@ -55,17 +102,22 @@ const projects = [
   },
   {
     title: "Automated Glaucoma Detection",
-    desc: "U-Net based deep learning model for optic disc segmentation on retinal images with Tkinter GUI for early glaucoma detection.",
+    desc: "Automated glaucoma detection system using U-Net deep learning for optic disc and cup segmentation from retinal fundus images. Developed for Digital Image Processing course (Semester 6). Calculates Cup-to-Disc Ratio (CDR) for diagnosis, trained on ORIGA dataset. Features Tkinter GUI for visualization with 90-95% segmentation accuracy.",
     tags: ["ai", "ml", "healthcare"],
     icon: "👁️",
-    github: "https://github.com/AasirFarrukh"
+    github: "https://github.com/AasirFarrukh/AutomatedGlaucomaDetection",
+    demoVideo: dipVideo,
+    demoImages: [dipScreen1, dipScreen2],
+    demoImageTitles: ["GUI Interface", "Segmentation Results"]
   },
   {
     title: "Timetable Scheduler",
-    desc: "Intelligent scheduling system using genetic algorithms in Python for university timetable optimization with hard/soft constraint handling.",
+    desc: "University timetable scheduling system using Genetic Algorithm in Python, developed for the AI course (Semester 6). Features tournament selection, single-point crossover, and mutation for optimization. Enforces hard constraints (no double-booking, room capacity, scheduling rules) and soft constraints (morning theory, afternoon labs). Exports optimized timetables to Excel with fitness score of 90.5.",
     tags: ["ai", "python", "algorithms"],
     icon: "📅",
-    github: "https://github.com/AasirFarrukh"
+    github: "https://github.com/AasirFarrukh/TimetableScheduling",
+    demoImages: [aiTimetable],
+    demoImageTitles: ["Generated Timetable Output"]
   },
 
   // ===== Web Development =====
@@ -81,10 +133,27 @@ const projects = [
   },
   {
     title: "Community Management System",
-    desc: "Web application using ASP.NET with SCRUM methodology, featuring role-based access control and MySQL database integration.",
+    desc: "Web-based platform for residential community management, developed for Software Engineering course (Semester 6). Features Admin and Resident modules for service requests, complaints, lost & found, emergency preparedness, rules & regulations, and interactive society maps. Built with ASP.NET Web Forms, C#, and MySQL backend with session-based authentication.",
     tags: ["web", "asp.net", "mysql"],
-    icon: "🏘️",
-    github: "https://github.com/AasirFarrukh"
+    icon: "SocietySync 🏘️",
+    isText: true,
+    github: "https://github.com/AasirFarrukh/SocietySync",
+    demoImages: [
+      seLogin, seAdminDashboard, seAdminCreateUser, seAdminEditUser, seAdminManageResDir, seResidentListAdmin,
+      seAdminServiceReq, seAdminServiceRequestList, seAdminComplaintDetails, seAdminComplaintFeedback,
+      seAdminLostFound, seAdminRuleReg, seAdminEmergencyPlan, seAdminSetEmergencyPlan, seAdminManageEmerNum,
+      seAdminAddEmergencyContacts, seAdminSocietyMap, seResidentDashboard, seResidentViewProfile, seResidentProfile,
+      seResidentServiceRes, seResidentComplaint, seResidentLostFound, seResidentEmergencyContacts,
+      seResidentEmergencyPrep, seResidentRules, seResidentResDir, seResidentSocMap
+    ],
+    demoImageTitles: [
+      "Login Page", "Admin Dashboard", "Create User", "Edit User", "Manage Resident Directory", "Resident List",
+      "Service Request Form", "Service Request List", "Complaint Details", "Complaint Feedback",
+      "Lost & Found", "Rules & Regulations", "Emergency Plan", "Set Emergency Plan", "Manage Emergency Numbers",
+      "Add Emergency Contacts", "Society Map", "Resident Dashboard", "View Profile", "Resident Profile",
+      "Service Requests", "File Complaint", "Lost & Found Items", "Emergency Contacts",
+      "Emergency Preparedness", "Community Rules", "Resident Directory", "Society Map View"
+    ]
   },
   {
     title: "Restaurant Website",
@@ -116,6 +185,16 @@ const projects = [
     isText: true,
     github: "https://github.com/AasirFarrukh/Neural-Network-Simulation"
   },
+  {
+    title: "OpenCL Parallel Image Processor",
+    desc: "Parallel image processing application using OpenCL for GPU-accelerated grayscale conversion. Developed for Parallel & Distributed Computing course (Semester 6). Features dynamic memory allocation, chunked processing for large datasets, and kernel-based pixel manipulation. Demonstrates efficient parallel computing with scalable performance.",
+    tags: ["other", "c", "opencl"],
+    icon: "GPU Gray 🖼️",
+    isText: true,
+    github: "https://github.com/AasirFarrukh",
+    demoImages: [pdcResult],
+    demoImageTitles: ["Grayscale Conversion Result"]
+  },
 
   // ===== Algorithms & Data Structures =====
   {
@@ -145,10 +224,13 @@ const projects = [
   // ===== Application Development =====
   {
     title: "Library Management System",
-    desc: "Java desktop application using JavaFX and MySQL with MVC architecture, featuring interactive dashboards and transaction workflows.",
+    desc: "A JavaFX-based Library Management System developed for the Software Design & Analysis (SDA) course. Features role-based access (Admin, Librarian, Member), book & member management, loan/return system with due date tracking, reservation system, and report generation. Built with MVC architecture and MySQL backend using JDBC integration.",
     tags: ["other", "java", "javafx"],
-    icon: "📚",
-    github: "https://github.com/AasirFarrukh"
+    icon: sdaLogo,
+    isImage: true,
+    github: "https://github.com/AasirFarrukh/LibraSys",
+    demoImages: [sdaLogin, sdaHome, sdaBookCatalog, sdaMemberCatalog, sdaAddBook, sdaAddMember, sdaIssueBook, sdaReturnRenew],
+    demoImageTitles: ["Login Page", "Home Dashboard", "Book Catalog", "Member Catalog", "Add Book", "Add Member", "Issue Book", "Return & Renew"]
   },
   {
     title: "Doctor Appointment System",

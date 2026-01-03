@@ -6,7 +6,7 @@ function AboutSection() {
   const { isDark } = useTheme();
 
   const highlights = [
-    { icon: GraduationCap, title: "Education", desc: "BS in Computer Science – FAST NUCES" },
+    { icon: GraduationCap, title: "Education", desc: "BS in Computer Science - FAST NUCES" },
     { icon: Code, title: "Tech Stack", desc: "C++ / Python / C# / JavaScript / React" },
     { icon: Briefcase, title: "Focus Areas", desc: "Clean UI • Performance • Machine Learning" }
   ];

@@ -5,9 +5,9 @@
 
 const education = [
   {
-    degree: "BS – Computer Science",
+    degree: "BS - Computer Science",
     school: "FAST NUCES (Islamabad)",
-    period: "Aug 2021 – Jul 2025",
+    period: "Aug 2021 - Jul 2025",
     cgpa: "3.0",
     details: [
       "Comprehensive CS curriculum covering algorithms, data structures, software engineering, and AI/ML",

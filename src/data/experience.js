@@ -7,7 +7,7 @@ const experience = [
   {
     title: "UI/UX Designer & Software Developer",
     company: "ITHM Rawalpindi",
-    period: "Nov 2025 – Present",
+    period: "Nov 2025 - Present",
     location: "Rawalpindi, Pakistan",
     type: "Internship",
     points: [
@@ -19,7 +19,7 @@ const experience = [
   {
     title: "Data Analyst & Frontend Engineer",
     company: "Upstart Commerce (Final Year Project)",
-    period: "Aug 2024 – Jun 2025",
+    period: "Aug 2024 - Jun 2025",
     location: "Islamabad, Pakistan",
     type: "Contract",
     points: [
@@ -32,7 +32,7 @@ const experience = [
   {
     title: "Data & IT Intern",
     company: "National Telecommunication Corporation",
-    period: "Jul 2024 – Sep 2024",
+    period: "Jul 2024 - Sep 2024",
     location: "Islamabad, Pakistan",
     type: "Internship",
     points: [
