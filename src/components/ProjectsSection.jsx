@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Code, Github, ExternalLink, ChevronDown, X, Play, Image } from 'lucide-react';
+import { Code, Github, ExternalLink, ChevronDown, X, Play, Image, Maximize2, Minimize2 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { projects } from '../data';
 
@@ -10,6 +10,7 @@ function ProjectsSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isFooterOpen, setIsFooterOpen] = useState(true);
   const [showVideo, setShowVideo] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const filteredProjects = selectedFilter === 'all'
     ? projects
@@ -28,15 +29,24 @@ function ProjectsSection() {
             prev === selectedProject.demoImages.length - 1 ? 0 : prev + 1
           );
         } else if (e.key === 'Escape') {
-          setSelectedProject(null);
-          setIsFooterOpen(true);
+          if (isFullscreen) {
+            setIsFullscreen(false);
+          } else {
+            setSelectedProject(null);
+            setIsFooterOpen(true);
+            setIsFullscreen(false);
+          }
+        } else if (e.key === 'f' || e.key === 'F') {
+          if (!showVideo) {
+            setIsFullscreen(!isFullscreen);
+          }
         }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedProject]);
+  }, [selectedProject, isFullscreen, showVideo]);
 
   return (
     <section id="projects" className="py-20 relative">
@@ -47,17 +57,24 @@ function ProjectsSection() {
           </h2>
 
           <div className="flex gap-3 flex-wrap">
-            {['all', 'web', 'ai', 'design', 'other'].map(filter => (
+            {[
+              { key: 'all', label: 'All' },
+              { key: 'ai', label: 'AI/ML' },
+              { key: 'web', label: 'Web' },
+              { key: 'systems', label: 'Systems' },
+              { key: 'apps', label: 'Apps' },
+              { key: 'design', label: 'Design' }
+            ].map(filter => (
               <button
-                key={filter}
-                onClick={() => setSelectedFilter(filter)}
+                key={filter.key}
+                onClick={() => setSelectedFilter(filter.key)}
                 className={`px-6 py-3 rounded-2xl font-bold transition-all shadow-xl ${
-                  selectedFilter === filter
+                  selectedFilter === filter.key
                     ? 'bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 text-white scale-110'
                     : `${isDark ? 'bg-white/10' : 'bg-white/40'} ${isDark ? 'text-white' : 'text-gray-900'} backdrop-blur-xl border ${isDark ? 'border-white/20' : 'border-white/60'} hover:scale-105`
                 }`}
               >
-                {filter.charAt(0).toUpperCase() + filter.slice(1)}
+                {filter.label}
               </button>
             ))}
           </div>
@@ -80,7 +97,7 @@ function ProjectsSection() {
                     <img
                       src={project.icon}
                       alt={project.title}
-                      className="w-32 h-32 object-contain rounded-2xl shadow-2xl"
+                      className="w-32 h-32 object-contain rounded-2xl shadow-2xl bg-white p-2"
                     />
                   </div>
                 ) : (
@@ -150,22 +167,34 @@ function ProjectsSection() {
             setSelectedProject(null);
             setIsFooterOpen(true);
             setShowVideo(false);
+            setIsFullscreen(false);
           }}
         >
           <div
             className={`relative w-full h-full max-w-7xl max-h-[95vh] ${isDark ? 'bg-gray-900' : 'bg-white'} rounded-3xl overflow-hidden shadow-2xl flex flex-col`}
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => {
-                setSelectedProject(null);
-                setIsFooterOpen(true);
-                setShowVideo(false);
-              }}
-              className="absolute top-4 right-4 z-20 w-12 h-12 bg-black/50 hover:bg-black/70 backdrop-blur-xl rounded-full flex items-center justify-center transition-all"
-            >
-              <X size={24} className="text-white" />
-            </button>
+            <div className="absolute top-4 right-4 z-20 flex gap-2">
+              {!showVideo && selectedProject.demoImages && (
+                <button
+                  onClick={() => setIsFullscreen(!isFullscreen)}
+                  className="w-12 h-12 bg-black/50 hover:bg-black/70 backdrop-blur-xl rounded-full flex items-center justify-center transition-all"
+                >
+                  {isFullscreen ? <Minimize2 size={20} className="text-white" /> : <Maximize2 size={20} className="text-white" />}
+                </button>
+              )}
+              <button
+                onClick={() => {
+                  setSelectedProject(null);
+                  setIsFooterOpen(true);
+                  setShowVideo(false);
+                  setIsFullscreen(false);
+                }}
+                className="w-12 h-12 bg-black/50 hover:bg-black/70 backdrop-blur-xl rounded-full flex items-center justify-center transition-all"
+              >
+                <X size={24} className="text-white" />
+              </button>
+            </div>
 
             {/* Video/Image Toggle Buttons */}
             {selectedProject.demoVideo && selectedProject.demoImages && (
@@ -307,6 +336,68 @@ function ProjectsSection() {
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Fullscreen Image Overlay */}
+      {isFullscreen && selectedProject && selectedProject.demoImages && (
+        <div
+          className="fixed inset-0 z-[200] bg-black flex items-center justify-center"
+          onClick={() => setIsFullscreen(false)}
+        >
+          {/* Close/Minimize button */}
+          <button
+            onClick={() => setIsFullscreen(false)}
+            className="absolute top-4 right-4 z-30 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center transition-all"
+          >
+            <Minimize2 size={24} className="text-white" />
+          </button>
+
+          {/* Image counter */}
+          <div className="absolute top-4 left-4 z-30 px-4 py-2 bg-white/10 backdrop-blur-xl rounded-full text-white font-bold">
+            {currentImageIndex + 1} / {selectedProject.demoImages.length}
+          </div>
+
+          {/* Image title */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 px-6 py-3 bg-white/10 backdrop-blur-xl rounded-full text-white font-bold text-center max-w-[90vw] truncate">
+            {selectedProject.demoImageTitles?.[currentImageIndex] || `Screenshot ${currentImageIndex + 1}`}
+          </div>
+
+          {/* Navigation buttons */}
+          {selectedProject.demoImages.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentImageIndex((prev) =>
+                    prev === 0 ? selectedProject.demoImages.length - 1 : prev - 1
+                  );
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-14 h-14 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center transition-all"
+              >
+                <ChevronDown size={32} className="text-white rotate-90" />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentImageIndex((prev) =>
+                    prev === selectedProject.demoImages.length - 1 ? 0 : prev + 1
+                  );
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-14 h-14 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center transition-all"
+              >
+                <ChevronDown size={32} className="text-white -rotate-90" />
+              </button>
+            </>
+          )}
+
+          {/* Fullscreen Image */}
+          <img
+            src={selectedProject.demoImages[currentImageIndex]}
+            alt={`${selectedProject.title} - ${selectedProject.demoImageTitles?.[currentImageIndex] || `Screenshot ${currentImageIndex + 1}`}`}
+            className="max-w-[95vw] max-h-[90vh] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
       )}
     </section>

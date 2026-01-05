@@ -3,10 +3,10 @@
  * Each certification has name, issuer, date, and optional image/link
  */
 
-import awsCert from '../Images/AWS-Academy-Cloud-Foundations.png';
-import wordpressCert from '../Images/Build-a-Free-Website-with-WordPress.png';
-import googleSheetsCert from '../Images/Create-Charts-and-Dashboard-using-Google-Sheets.png';
-import sustainabilityCert from '../Images/Sustainability-E-Learning.png';
+import awsCert from '../Images/Certificates/AWS-Academy-Cloud-Foundations.png';
+import wordpressCert from '../Images/Certificates/Build-a-Free-Website-with-WordPress.png';
+import googleSheetsCert from '../Images/Certificates/Create-Charts-and-Dashboard-using-Google-Sheets.png';
+import sustainabilityCert from '../Images/Certificates/Sustainability-E-Learning.png';
 
 const certifications = [
   {

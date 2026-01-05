@@ -9,7 +9,7 @@ const experience = [
     company: "ITHM Rawalpindi",
     period: "Nov 2025 - Present",
     location: "Rawalpindi, Pakistan",
-    type: "Internship",
+    type: "Full Time",
     points: [
       "Redesigned institute website with modern UI/UX featuring gradient backgrounds and responsive layouts for enhanced user engagement",
       "Developing Xenia Services corporate website from scratch using WordPress and Elementor with custom design elements",
