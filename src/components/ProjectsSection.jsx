@@ -84,9 +84,9 @@ function ProjectsSection() {
           {filteredProjects.map((project, idx) => (
             <div
               key={idx}
-              className={`${isDark ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-2xl rounded-3xl overflow-hidden border ${isDark ? 'border-white/10' : 'border-white/60'} hover:scale-105 transition-all group shadow-2xl`}
+              className={`${isDark ? 'bg-white/5' : 'bg-white/40'} backdrop-blur-2xl rounded-3xl overflow-hidden border ${isDark ? 'border-white/10' : 'border-white/60'} hover:scale-105 transition-all group shadow-2xl flex flex-col`}
             >
-              <div className="h-56 bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 flex items-center justify-center text-8xl relative overflow-hidden">
+              <div className="h-56 bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 flex items-center justify-center text-8xl relative overflow-hidden flex-shrink-0">
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all" />
                 {project.isText ? (
                   <span className="relative z-10 transform group-hover:scale-110 transition-transform text-white font-bold text-3xl md:text-4xl px-4 text-center drop-shadow-2xl">
@@ -111,11 +111,11 @@ function ProjectsSection() {
                 )}
               </div>
 
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-1">
                 <h3 className={`text-2xl font-bold mb-3 ${isDark ? 'text-white group-hover:text-cyan-400' : 'text-gray-900'} transition-colors`}>
                   {project.title}
                 </h3>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-4 leading-relaxed`}>
+                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-4 leading-relaxed flex-1`}>
                   {project.desc}
                 </p>
 
@@ -130,7 +130,7 @@ function ProjectsSection() {
                   ))}
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex gap-4 mt-auto">
                   <a
                     href={project.github}
                     target="_blank"
