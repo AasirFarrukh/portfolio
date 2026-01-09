@@ -145,7 +145,7 @@ const projects = [
   // ===== AI / Machine Learning =====
   {
     title: "Video Frame Prediction",
-    desc: "Deep learning project predicting future video frames using ConvLSTM, PredRNN, and Transformer architectures. Trained on UCF101 dataset (WalkingWithDog, JumpRope, Biking, Swing, Basketball) with 64x64 frames, using Adam optimizer and MSE loss. Evaluates with MSE and SSIM metrics. Features Streamlit UI for real-time visualization and model comparison.",
+    desc: "Deep Learning course project predicting future video frames using ConvLSTM, PredRNN, and Transformer architectures. Trained on UCF101 dataset with multiple action categories. Evaluates predictions using MSE and SSIM metrics. Features Streamlit UI for real-time visualization and model comparison.",
     tags: ["ai", "ml", "deeplearning"],
     icon: "🎬",
     github: "https://github.com/AasirFarrukh/VideoFramePrediction-DL",
@@ -154,7 +154,7 @@ const projects = [
   },
   {
     title: "AI-Powered Fitness Routine Planner",
-    desc: "Generative AI project for personalized workout plans using LLMs, FAISS semantic search with Sentence Transformers, and Vision Transformer (ViT) for 22-category workout image classification. Features text-based exercise suggestions via semantic similarity and image-based workout recognition. Built with Gradio UI, trained on curated Kaggle fitness datasets.",
+    desc: "Generative AI course project for personalized workout plans using LLMs, FAISS semantic search, and Vision Transformer (ViT) for workout image classification across 22 categories. Features text-based exercise suggestions and image-based workout recognition. Built with Gradio UI.",
     tags: ["ai", "ml", "python"],
     icon: "💪",
     github: "https://github.com/AasirFarrukh/AI-Powered-Fitness-Routine-Planner",
@@ -163,7 +163,7 @@ const projects = [
   },
   {
     title: "Automated Glaucoma Detection",
-    desc: "Automated glaucoma detection system using U-Net deep learning for optic disc and cup segmentation from retinal fundus images. Developed for Digital Image Processing course (Semester 6). Calculates Cup-to-Disc Ratio (CDR) for diagnosis, trained on ORIGA dataset. Features Tkinter GUI for visualization with 90-95% segmentation accuracy.",
+    desc: "Digital Image Processing course project using U-Net deep learning for optic disc and cup segmentation from retinal fundus images. Calculates Cup-to-Disc Ratio (CDR) for glaucoma diagnosis, achieving 90-95% segmentation accuracy on ORIGA dataset. Features Tkinter GUI for visualization.",
     tags: ["ai", "ml", "healthcare"],
     icon: "👁️",
     github: "https://github.com/AasirFarrukh/AutomatedGlaucomaDetection",
@@ -173,7 +173,7 @@ const projects = [
   },
   {
     title: "Timetable Scheduler",
-    desc: "University timetable scheduling system using Genetic Algorithm in Python, developed for the AI course (Semester 6). Features tournament selection, single-point crossover, and mutation for optimization. Enforces hard constraints (no double-booking, room capacity, scheduling rules) and soft constraints (morning theory, afternoon labs). Exports optimized timetables to Excel with fitness score of 90.5.",
+    desc: "Artificial Intelligence course project implementing a university timetable scheduling system using Genetic Algorithm in Python. Features tournament selection, crossover, and mutation for optimization. Enforces hard constraints (no double-booking, room capacity) and soft constraints (morning theory, afternoon labs). Exports optimized timetables to Excel.",
     tags: ["ai", "python", "algorithms"],
     icon: "📅",
     github: "https://github.com/AasirFarrukh/TimetableScheduling",
@@ -183,8 +183,22 @@ const projects = [
 
   // ===== Web Development =====
   {
+    title: "ITHM Rawalpindi",
+    desc: "UI/UX redesign for ITHM Rawalpindi (Xenia School of Hospitality), a hospitality education institution. Redesigned and improved page layouts, enhanced visual hierarchy, and optimized user experience across the website. The institution offers programs in Culinary Arts, Baking & Patisserie, Hospitality Management, and CTH UK certifications. Built with WordPress and Elementor.",
+    tags: ["web", "wordpress", "elementor"],
+    icon: "🎓",
+    live: "https://ithm.pk/"
+  },
+  {
+    title: "Xenia Services",
+    desc: "Fully developed corporate website for Xenia Services, the parent company overseeing ITHM and other hospitality-related ventures. Designed and built the complete website from scratch including layout, structure, and content organization. Built with WordPress and Elementor.",
+    tags: ["web", "wordpress", "elementor"],
+    icon: "🏢",
+    comingSoon: true
+  },
+  {
     title: "Community Management System",
-    desc: "Web-based platform for residential community management, developed for Software Engineering course (Semester 6). Features Admin and Resident modules for service requests, complaints, lost & found, emergency preparedness, rules & regulations, and interactive society maps. Built with ASP.NET Web Forms, C#, and MySQL backend with session-based authentication.",
+    desc: "Software Engineering course project - a web platform for residential community management. Features Admin and Resident modules for service requests, complaints, lost & found, emergency preparedness, and interactive society maps. Built with ASP.NET Web Forms, C#, and MySQL.",
     tags: ["web", "asp.net", "mysql"],
     icon: "SocietySync 🏘️",
     isText: true,
@@ -208,7 +222,7 @@ const projects = [
   },
   {
     title: "University Management System",
-    desc: "Role-based university system built with ASP.NET Web Forms and SQL Server. Features admin course management, faculty attendance tracking, student grade viewing, and normalized database schema with ADO.NET.",
+    desc: "Database Systems course project - a role-based university portal built with ASP.NET Web Forms and SQL Server. Features separate dashboards for Admin, Faculty, and Students with course management, attendance tracking, and grade viewing. Implements normalized database schema with ADO.NET for data access.",
     tags: ["web", "asp.net", "database"],
     icon: flexLogo,
     isImage: true,
@@ -218,7 +232,7 @@ const projects = [
   },
   {
     title: "Restaurant Website",
-    desc: "Static restaurant website built with pure HTML and CSS. First semester ICT project focused on advanced styling techniques, responsive design, and modern UI aesthetics.",
+    desc: "Introduction to ICT course project - a static restaurant website built with pure HTML and CSS. Features responsive design, modern UI aesthetics, menu display, deals section, and user authentication pages.",
     tags: ["web", "html", "css"],
     icon: "Food Stop 🍽️",
     isText: true,
@@ -230,7 +244,7 @@ const projects = [
   // ===== Systems & Security =====
   {
     title: "Calculator DApp on Ethereum",
-    desc: "Blockchain & Cryptocurrency project demonstrating complete DApp lifecycle on Ethereum. Built Calculator smart contract in Solidity with add, subtract, multiply, divide operations and zero-division validation. Deployed to Ganache local testnet via Remix IDE and MetaMask. Features Web3.js frontend integration with transaction signing and result verification.",
+    desc: "Blockchain & Cryptocurrency course project demonstrating complete DApp development lifecycle. Built a Calculator smart contract in Solidity with arithmetic operations and zero-division validation. Deployed to Ganache testnet via Remix IDE and MetaMask. Features Web3.js frontend for transaction signing and verification.",
     tags: ["systems", "blockchain", "web3"],
     icon: "Blockchain ⛓️",
     isText: true,
@@ -250,7 +264,7 @@ const projects = [
   },
   {
     title: "Web Security Lab",
-    desc: "Information Security project exploring SQL Injection and CSRF vulnerabilities on Ubuntu 20.04 VM with Docker containers. Demonstrates authentication bypass, data manipulation, and GET/POST-based CSRF attacks on Elgg platform. Implements defenses including prepared statements, secret tokens, and SameSite cookies (None/Lax/Strict).",
+    desc: "Information Security course project exploring SQL Injection and CSRF vulnerabilities using Docker containers. Demonstrates authentication bypass, data manipulation, and CSRF attacks on Elgg social platform. Implements defenses including prepared statements, CSRF tokens, and SameSite cookie policies.",
     tags: ["systems", "security", "docker"],
     icon: "InfoSec 🔐",
     isText: true,
@@ -274,7 +288,7 @@ const projects = [
   },
   {
     title: "Network Topology",
-    desc: "5th semester Computer Networks project designing and simulating a complex multi-protocol network in Cisco Packet Tracer. Implements VLSM, OSPF, EIGRP, RIP, Route Redistribution, DHCP, NAT, and Access Control Lists (ACLs) across multiple topology blocks.",
+    desc: "Computer Networks course project designing and simulating a multi-protocol enterprise network in Cisco Packet Tracer. Implements VLSM subnetting, dynamic routing (OSPF, EIGRP, RIP), route redistribution, DHCP, NAT, and Access Control Lists (ACLs).",
     tags: ["systems", "networking"],
     icon: "Topology 🌐",
     isText: true,
@@ -284,7 +298,7 @@ const projects = [
   },
   {
     title: "OpenCL Parallel Image Processor",
-    desc: "Parallel image processing application using OpenCL for GPU-accelerated grayscale conversion. Developed for Parallel & Distributed Computing course (Semester 6). Features dynamic memory allocation, chunked processing for large datasets, and kernel-based pixel manipulation. Demonstrates efficient parallel computing with scalable performance.",
+    desc: "Parallel & Distributed Computing course project implementing GPU-accelerated image processing using OpenCL. Features grayscale conversion with dynamic memory allocation, chunked processing for large datasets, and custom kernel-based pixel manipulation.",
     tags: ["systems", "c", "opencl"],
     icon: "GPU Gray 🖼️",
     isText: true,
@@ -294,7 +308,7 @@ const projects = [
   },
   {
     title: "Neural Network Simulation",
-    desc: "Multi-layer feedforward neural network simulation using POSIX threads, process forking, mutex locks, and pipes. Demonstrates parallelism, synchronization, and inter-process communication in C++ for forward and backpropagation.",
+    desc: "Operating Systems course project simulating a multi-layer feedforward neural network using POSIX threads, process forking, mutex locks, and pipes. Demonstrates parallelism, synchronization, and IPC in C++ for forward and backpropagation.",
     tags: ["systems", "cpp", "os"],
     icon: "Neural Net 🧠",
     isText: true,
@@ -304,7 +318,7 @@ const projects = [
   // ===== Applications =====
   {
     title: "Library Management System",
-    desc: "A JavaFX-based Library Management System developed for the Software Design & Analysis (SDA) course. Features role-based access (Admin, Librarian, Member), book & member management, loan/return system with due date tracking, reservation system, and report generation. Built with MVC architecture and MySQL backend using JDBC integration.",
+    desc: "Software Design & Analysis course project - a JavaFX-based library system with role-based access for Admin, Librarian, and Members. Features book & member management, loan/return tracking, reservation system, and report generation. Built with MVC architecture and MySQL backend.",
     tags: ["apps", "java", "javafx"],
     icon: sdaLogo,
     isImage: true,
@@ -314,7 +328,7 @@ const projects = [
   },
   {
     title: "Doctor Appointment System",
-    desc: "C++ OOP project simulating an online doctor appointment platform. Features role-based access (Admin/Doctor/Patient), appointment scheduling, file handling for persistent storage, and demonstrates encapsulation, inheritance, and polymorphism.",
+    desc: "Object-Oriented Programming course project simulating an online doctor appointment platform in C++. Features role-based access for Admin, Doctor, and Patient with appointment scheduling and file-based persistence. Demonstrates encapsulation, inheritance, and polymorphism.",
     tags: ["apps", "cpp", "oop"],
     icon: "Oladoc 🏥",
     isText: true,
@@ -324,7 +338,7 @@ const projects = [
   },
   {
     title: "2D Taxi Game",
-    desc: "Interactive 2D taxi pickup and drop-off simulation game built with C++ using OpenGL and GLUT. Features collision detection, randomized traffic, leaderboard system, and adjustable difficulty.",
+    desc: "Programming Fundamentals course project - an interactive 2D taxi simulation game built with C++ using OpenGL and GLUT. Features collision detection, randomized traffic, leaderboard system, and adjustable difficulty levels.",
     tags: ["apps", "cpp", "opengl"],
     icon: "Rush Hour 🚖",
     isText: true,
@@ -334,7 +348,7 @@ const projects = [
   },
   {
     title: "Brick Breaker Game",
-    desc: "Classic brick breaker game implemented in x86 Assembly Language, running in DOS via DOSBox. Features multiple levels, lives system, high score tracking, pause/resume functionality, and collision detection logic.",
+    desc: "Computer Organization & Assembly Language course project - a classic brick breaker game implemented in x86 Assembly running in DOSBox. Features multiple levels, lives system, high score tracking, pause/resume, and collision detection.",
     tags: ["apps", "assembly", "game"],
     icon: "Brick Breaker 🧱",
     isText: true,
@@ -344,7 +358,7 @@ const projects = [
   },
   {
     title: "Largest Strongly Connected Component Finder",
-    desc: "C++ program implementing Kosaraju's Algorithm to find the largest Strongly Connected Component in directed graphs. Processes large-scale graph datasets with DFS traversal, graph reversal, and SCC detection.",
+    desc: "Discrete Mathematics course project implementing Kosaraju's Algorithm in C++ to find the largest Strongly Connected Component in directed graphs. Features DFS traversal, graph reversal, and efficient SCC detection for large-scale datasets.",
     tags: ["apps", "cpp", "algorithms"],
     icon: "SCC 🔗",
     isText: true,
@@ -352,7 +366,7 @@ const projects = [
   },
   {
     title: "String Matching Algorithm",
-    desc: "Design and Analysis of Algorithms project implementing sliding window search technique to identify complete dish sets from ingredient sequences. Ensures each ingredient is used once per dish with efficient pattern matching in C++.",
+    desc: "Design & Analysis of Algorithms course project implementing a sliding window search technique in C++ to identify complete dish sets from ingredient sequences. Features efficient pattern matching ensuring each ingredient is used exactly once per dish.",
     tags: ["apps", "cpp", "algorithms"],
     icon: "String Match 🔤",
     isText: true,
@@ -360,7 +374,7 @@ const projects = [
   },
   {
     title: "Optimal File Searching",
-    desc: "Data Structures course project (Semester 3) implementing multiple tree-based search algorithms in C++. Compares performance of AVL trees, Red-Black trees, and B-Trees for efficient file search operations and demonstrates advanced data structure methodologies.",
+    desc: "Data Structures course project implementing and comparing tree-based search algorithms in C++. Benchmarks AVL trees, Red-Black trees, and B-Trees for file search performance, demonstrating trade-offs between different data structures.",
     tags: ["apps", "algorithms", "cpp"],
     icon: "🔍",
     github: "https://github.com/AasirFarrukh"
@@ -369,7 +383,7 @@ const projects = [
   // ===== Design =====
   {
     title: "Gamified Stress Management App",
-    desc: "User Experience Engineering (Semester 8) project - a gamified stress-relief mobile app for university students. Features mindfulness mini-games, guided breathing exercises, progress tracking, and emergency relief tools. Achieved SUS score of 78.3/100 through usability testing with Think-Aloud Protocol and Nielsen's Heuristics. Prototyped in Figma across Lo-fi, Mid-fi, and Hi-fi stages.",
+    desc: "User Experience Engineering course project - a gamified stress-relief mobile app for university students. Features mindfulness mini-games, guided breathing exercises, progress tracking, and emergency relief tools. Achieved SUS score of 78.3/100 through usability testing. Prototyped in Figma across Lo-fi, Mid-fi, and Hi-fi stages.",
     tags: ["design", "figma", "ux"],
     icon: "ZenQuest 🧘",
     isText: true,

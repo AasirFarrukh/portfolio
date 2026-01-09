@@ -131,14 +131,29 @@ function ProjectsSection() {
                 </div>
 
                 <div className="flex gap-4 mt-auto">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-bold"
-                  >
-                    <Github size={20} /> Code
-                  </a>
+                  {project.comingSoon ? (
+                    <span className="flex items-center gap-2 text-gray-500 font-bold cursor-not-allowed">
+                      Coming Soon
+                    </span>
+                  ) : project.live ? (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-bold"
+                    >
+                      <ExternalLink size={20} /> Visit
+                    </a>
+                  ) : (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-bold"
+                    >
+                      <Github size={20} /> Code
+                    </a>
+                  )}
                   {(project.demoImages || project.demoVideo) && (
                     <button
                       onClick={() => {
