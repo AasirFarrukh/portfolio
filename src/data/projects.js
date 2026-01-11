@@ -194,7 +194,7 @@ const projects = [
     desc: "Fully developed corporate website for Xenia Services, the parent company overseeing ITHM and other hospitality-related ventures. Designed and built the complete website from scratch including layout, structure, and content organization. Built with WordPress and Elementor.",
     tags: ["web", "wordpress", "elementor"],
     icon: "🏢",
-    comingSoon: true
+    live: "https://xeniaservices.com.pk/"
   },
   {
     title: "Community Management System",
